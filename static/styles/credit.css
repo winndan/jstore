@@ -1,0 +1,12 @@
+.credit-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+#credit-data {
+    margin-top: 15px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}

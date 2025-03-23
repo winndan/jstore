@@ -1,0 +1,25 @@
+/pos-system
+│── main.py
+│── db_connection.py
+│── supabase_logic.py
+│── static/
+│   ├── styles/
+│   │   ├── sales.css
+│   │   ├── add_products.css
+│   │   ├── credit.css
+│   │   ├── reports.css
+│   │   ├── inventory.css
+│   ├── scripts/
+│   │   ├── sales.js
+│   │   ├── add_products.js
+│   │   ├── credit.js
+│   │   ├── reports.js
+│   │   ├── inventory.js
+│── pages/
+│   ├── sales.py
+    ├── customers.py
+│   ├── add_products.py
+│   ├── credit.py
+│   ├── reports.py
+│   ├── inventory.py
+│── homepage.py

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMart Grocery - Desserts</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+            </div>
+            <ul class="nav-items">
+                <li class="nav-item active">
+                    <i class="fas fa-home"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-th"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-bookmark"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-comment"></i>
+                </li>
+            </ul>
+            <div class="nav-bottom">
+                <div class="nav-item">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="header">
+                <h1>Items</h1>
+                <div class="category-dropdown">
+                    <h2>Desserts <i class="fas fa-chevron-down"></i></h2>
+                </div>
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search for items...">
+                    </div>
+                    <button class="filter-button">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                </div>
+                <div class="category-tabs">
+                    <button class="tab active">Cakes</button>
+                    <button class="tab">Pastry</button>
+                    <button class="tab">Ice Cream</button>
+                    <button class="tab">Pancakes</button>
+                    <button class="tab">Vegan</button>
+                    <button class="tab-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Raspberry Tart">
+                    </div>
+                    <div class="product-info">
+                        <h3>Raspberry Tart</h3>
+                        <div class="product-price-action">
+                            <p class="price">£6.12</p>
+                            <button class="add-button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Lemon Tart">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lemon Tart</h3>
+                        <div class="product-price-action">
+                            <p class="price">£2.86</p>
+                            <button class="add-button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Chocolate Tart">
+                    </div>
+                    <div class="product-info">
+                        <h3>Chocolate Tart</h3>
+                        <div class="product-price-action">
+                            <p class="price">£6.12</p>
+                            <button class="add-button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Fruit Tart">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fruit Tart</h3>
+                        <div class="product-price-action">
+                            <p class="price">£6.12</p>
+                            <button class="add-button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Chocolate Cake">
+                    </div>
+                    <div class="product-info">
+                        <h3>Chocolate Cake</h3>
+                        <div class="product-price-action">
+                            <p class="price">£24.86</p>
+                            <button class="add-button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Mini Chocolate Cake">
+                    </div>
+                    <div class="product-info">
+                        <h3>Mini Chocolate Cake</h3>
+                        <div class="product-price-action">
+                            <p class="price">£6.12</p>
+                            <button class="add-button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Order Summary -->
+        <aside class="order-summary">
+            <h2>Current Order</h2>
+            <div class="customer-info">
+                <div class="customer-avatar">
+                    <img src="/placeholder.svg?height=40&width=40" alt="Customer Avatar">
+                </div>
+                <p class="customer-name">Emma Wang</p>
+            </div>
+
+            <div class="order-items">
+                <!-- Order Item 1 -->
+                <div class="order-item">
+                    <div class="item-image">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Raspberry Tart">
+                    </div>
+                    <div class="item-details">
+                        <p class="item-name">Raspberry Tart</p>
+                        <p class="item-price">£6.12</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span>1</span>
+                        <button class="quantity-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Order Item 2 -->
+                <div class="order-item">
+                    <div class="item-image">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Lemon Tart">
+                    </div>
+                    <div class="item-details">
+                        <p class="item-name">Lemon Tart</p>
+                        <p class="item-price">£2.86</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span>1</span>
+                        <button class="quantity-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-summary-details">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>£8.98</span>
+                </div>
+                <div class="summary-row">
+                    <span>Discount</span>
+                    <span>£0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Service Charge</span>
+                    <span>20%</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax</span>
+                    <span>£0.50</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span>£9.48</span>
+                </div>
+            </div>
+
+            <button class="continue-button">Continue</button>
+        </aside>
+    </div>
+</body>
+</html>
