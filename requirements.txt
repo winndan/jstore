@@ -3,3 +3,4 @@ python-dotenv
 python-fasthtml
 monsterUi
 pydantic
+fastapi
