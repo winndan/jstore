@@ -50,12 +50,12 @@
 
 .product-form input:focus,
 .product-form select:focus {
-    border: 1px solid #007bff;
+    border: 1px solid #5f27cd;
     outline: none;
 }
 
 .submit-button {
-    background: #007bff;
+    background: #5f27cd;
     color: white;
     font-size: 16px;
     padding: 12px;
@@ -67,7 +67,7 @@
 }
 
 .submit-button:hover {
-    background: #0056b3;
+    background: #4b1fa3;
 }
 
 /* ✅ Product List */

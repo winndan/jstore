@@ -1,69 +1,92 @@
-.sales-container {
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+/* Product Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
-#sales-data {
-    margin-top: 15px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    border: 1px solid #ddd;
-    width: 100%;
-    overflow-x: auto;
+/* Product Card */
+.product-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+    padding: 10px;
 }
 
-/* No Sales & Error Message */
-.no-sales, .error-message {
-    color: red;
-    font-size: 14px;
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Product Image */
+.product-image-container {
+    display: flex;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+
+.product-image {
+    height: 150px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Product Info */
+.product-info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Product Details (Title, Price, Buttons) */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+/* Name & Price Alignment */
+.product-title {
+    font-size: 16px;
+    font-weight: bold;
     text-align: center;
 }
 
-/* Table styling for sales data */
-#sales-data table {
+.price {
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+/* Product Actions (Buttons) */
+.product-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
-    border-collapse: collapse;
-    font-size: 16px;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
 }
 
-#sales-data th, #sales-data td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-#sales-data th {
+/* Buttons */
+.buy-button, .restock-button {
     background-color: #007bff;
     color: white;
-    font-weight: 600;
-    text-transform: uppercase;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 45%;
+    text-align: center;
 }
 
-#sales-data tr:hover {
-    background-color: #f8f9fa;
+.restock-button {
+    background-color: #28a745;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .sales-container {
-        padding: 10px;
-    }
-
-    #sales-data table {
-        font-size: 14px;
-    }
-
-    #sales-data th, #sales-data td {
-        padding: 10px;
-    }
+.buy-button:hover, .restock-button:hover {
+    opacity: 0.8;
 }
