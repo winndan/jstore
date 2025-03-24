@@ -98,3 +98,54 @@ if __name__ == "__main__":
         price=2.99,
         image_path="header-1.jpg"  # Provide the path to the image file
     )
+
+
+
+
+
+
+
+def add_products_page():
+    return Div(
+        H1("Add New Product", cls="page-title"),
+        Form(
+            Div(
+                Label("Product Name"),
+                Input(type="text", name="name", placeholder="Enter product name", required=True),
+                cls="form-group"
+            ),
+            Div(
+                Label("Category"),
+                Input(type="text", name="category", placeholder="Enter category", required=True),
+                cls="form-group"
+            ),
+            Div(
+                Label("Price"),
+                Input(type="number", name="price", placeholder="Enter price", required=True),
+                cls="form-group"
+            ),
+            Div(
+                Label("Stock"),
+                Input(type="number", name="stock", placeholder="Enter stock quantity", required=True),
+                cls="form-group"
+            ),
+            Div(
+                Label("Upload Image"),
+                Input(type="file", name="image", accept="image/*", required=True),
+                cls="form-group"
+            ),
+            Button("Add Product", type="submit", **{
+                "hx-post": "/api/products/add",
+                "hx-encoding": "multipart/form-data",  # ✅ Allow file uploads
+                "hx-target": "#message-box",
+                "hx-swap": "innerHTML",
+                "hx-on::after-request": "this.form.reset();"
+            }, cls="submit-button"),
+            cls="product-form"
+        ),
+        Div(id="message-box", cls="message-box"),  # ✅ Message Box for Response
+
+        Link(rel="stylesheet", href="static/styles/add_products.css"),
+        Script(src="static/scripts/add_products.js"),
+        cls="add-product-container"
+    )

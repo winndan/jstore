@@ -131,11 +131,6 @@ def add_products_page():
             cls="product-form"
         ),
         Div(id="message-box", cls="message-box"),  # ✅ Message Box for Response
-        H2("Product List", cls="product-list-title"),
-        Div(id="product-list", **{
-            "hx-get": "/api/products",
-            "hx-trigger": "load"
-        }, cls="product-list"),
 
         Link(rel="stylesheet", href="static/styles/add_products.css"),
         Script(src="static/scripts/add_products.js"),

@@ -87,21 +87,26 @@ def get_products(category: str = ""):
         data = response.data if hasattr(response, "data") else response[1]
 
         return Div(
-            *[
-                Div(
-                    Div(
-                        Img(src=product["image_id"], alt=product["name"], cls="product-image"),
-                        cls="product-card"
-                    ),
-                    H3(product["name"]),
-                    P(f"${product['price']}", cls="price"),
-                    Button(I(cls="fas fa-plus"), cls="add-button"),
-                    cls="product-card"
-                )
-                for product in data
-            ],
-            cls="products-grid"
+    *[
+        Div(
+            Div(
+                Img(src=product["image_id"], alt=product["name"], cls="product-image"),
+                cls="product-image-container"  # Ensure proper image container
+            ),
+            H3(product["name"], cls="product-title"),
+            P(f"₱{product['price']}", cls="price"),
+            Div(  # Wrap buttons in a flex container
+                Button("Add Item", cls="add-button"),  # ✅ Static "Add Item" Button
+                Button("Buy Item", cls="add-button"),  # ✅ Static "Buy Item" Button
+                cls="button-container"  # Wrapper for styling
+            ),
+            cls="product-card"
         )
+        for product in data
+    ],
+    cls="products-grid"
+)
+
 
     except Exception as e:
         print(f"🚨 Error fetching products: {str(e)}")

@@ -1,75 +1,82 @@
 from fasthtml.common import *
-from supabase import create_client
+from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
-# Initialize Supabase client
+# Ensure environment variables exist
 SUPABASE_URL = os.getenv("supa_urll")
 SUPABASE_KEY = os.getenv("supa_keyy")
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+# Validate credentials before proceeding
+if not SUPABASE_URL or not SUPABASE_KEY:
+    raise ValueError("Missing Supabase credentials. Check your .env file.")
+
+# Initialize Supabase client
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # ✅ Fetch categories dynamically from Supabase
 def fetch_categories():
-    response = supabase.table("products").select("category").execute()
-    categories = set(item["category"] for item in response.data)  # Unique categories
-    return sorted(categories)  # Sort categories alphabetically
+    try:
+        response = supabase.table("products").select("category").execute()
+        
+        # Ensure data is not None before processing
+        if response.data:
+            categories = set(item["category"] for item in response.data if item.get("category"))
+            return sorted(categories) if categories else ["All"]  # Default category
+        
+        return ["All"]  # Fallback if no data
 
+    except Exception as e:
+        print(f"Error fetching categories: {e}")
+        return ["All"]  # Default category on failure
+
+# ✅ Sales Page UI
 def sales_page():
     categories = fetch_categories()
-    
-    return Div(
-        # ✅ Main Content Area
-        Main(
-            Div(
-                H1("Items"),
-                Div(H2("Categories", I(cls="fas fa-chevron-down")), cls="category-dropdown"),
-                Div(
-                    Div(I(cls="fas fa-search"), Input(type="text", placeholder="Search for items..."), cls="search-box"),
-                    Button(I(cls="fas fa-sliders-h"), cls="filter-button"),
-                    cls="search-container"
-                ),
-                # ✅ Dynamically Generated Category Tabs with HTMX
-                Div(
-                    *[
-                        Button(category, cls="tab", **{"data-category": category, "hx-get": f"/api/products?category={category}", "hx-target": "#products-grid"})
-                        for category in categories
-                    ],
-                    Button(I(cls="fas fa-chevron-right"), cls="tab-arrow"),
-                    cls="category-tabs"
-                ),
-                cls="header"
-            ),
-            
-            Div(
-                Div(
-                    cls="products-grid", id="products-grid", **{"hx-get": f"/api/products?category={categories[0]}", "hx-trigger": "load"}
-                ),
-                cls="main-content"
-            ),
-        ),
+    default_category = categories[0]  # Ensure there's always a default category
 
-        # ✅ Include CSS file
-        Link(rel="stylesheet", href="static/styles/sales.css"),
+    return Div(
+        # ✅ Message Box for Feedback
+        Div(id="message-box", cls="message-box"),
         
-        # ✅ Include JavaScript file
-        Script(src="static/scripts/sales.js"),
-    )
-
-def render_product_card(product):
-    return Div(
-        Div(Img(src=product["image_id"], alt=product["name"], cls="product-image"), cls="product-image-container"),
+        # ✅ Page Header
+        H2("Product List", cls="product-list-title"),
+        
+        # ✅ Search & Filter Section
         Div(
-            H3(product["name"], cls="product-title"),
-            P(f"${product['price']:.2f}", cls="price"),
-            Div(
-                Button("Buy", cls="buy-button", **{"data-id": product["id"]}),
-                Button("Restock", cls="restock-button", **{"data-id": product["id"]}),
-                cls="product-actions"
-            ),
-            cls="product-info"
+            Div(I(cls="fas fa-search"), Input(type="text", placeholder="Search for items...", id="search-input"), cls="search-box"),
+            Button(I(cls="fas fa-sliders-h"), cls="filter-button"),
+            cls="search-container"
         ),
-        cls="product-card"
+        
+        # ✅ Category Tabs
+        Div(
+            *[
+                Button(category, cls="tab", **{
+                    "data-category": category,
+                    "hx-get": f"/api/products?category={category}",
+                    "hx-target": "#product-list",
+                    "hx-trigger": "click"
+                })
+                for category in categories
+            ],
+            cls="category-tabs"
+        ),
+        
+        # ✅ Product List (Auto-loads Default Category)
+        Div(
+            id="product-list",
+            **{
+                "hx-get": f"/api/products?category={default_category}",
+                "hx-trigger": "load"
+            },
+            cls="product-list"
+        ),
+        
+        # ✅ Load Styles & Scripts
+        Link(rel="stylesheet", href="static/styles/sales.css"),
+        Script(src="static/scripts/sales.js"),
     )
